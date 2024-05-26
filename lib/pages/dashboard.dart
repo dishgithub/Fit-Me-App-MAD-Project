@@ -1,3 +1,6 @@
+import 'package:fit_me/pages/Profile.dart';
+import 'package:fit_me/pages/meals.dart';
+import 'package:fit_me/pages/workouts.dart';
 import 'package:flutter/material.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -8,17 +11,49 @@ class DashBoardWidget extends StatefulWidget {
 }
 
 class _DashBoardWidgetState extends State<DashBoardWidget> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    WorkOut(),
+    Meals(),
+    Profile()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dashboard'),
-        centerTitle: true,
-        backgroundColor: Colors.pinkAccent,
-      ),
-      body: Center(
-        child: Text('Dashboard')
-      ),
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+            icon: Icon(Icons.run_circle_outlined),
+            label: 'Workouts',
+            backgroundColor: Colors.green
+          ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.set_meal),
+            label: 'Meals',
+            // title: Text('Search'),
+            backgroundColor: Colors.yellow
+          ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            label: 'Profile',
+            // title: Text('Profile'),
+            backgroundColor: Colors.blue,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        elevation: 15,
+      )
     );
   }
 }
