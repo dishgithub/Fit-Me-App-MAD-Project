@@ -29,11 +29,10 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Consumer<UserModel>(
-      builder: (context, userModel,child){
+      builder: (context, userModel, child){
         return  Scaffold(
           body: Container(
           child: Center(
@@ -79,39 +78,29 @@ class _LoginWidgetState extends State<LoginWidget> {
           height: 40,
           ),
           ElevatedButton.icon(
-          onPressed: ()async {
-          try{
-          GoogleAuthProvider _googleAuthProvider= GoogleAuthProvider();
-          await _auth.signInWithProvider(_googleAuthProvider);
-          }
-          catch(e){
-          print(e);
-          }
-          print(_user!.email);
-          userModel.user= _user;
-          if(userModel.user!=null){
-          Navigator.pushReplacementNamed(
-          context,
-          '/dashboard'
-          );
-          print(userModel.user!.email);
-          }
-          },
-          icon: Icon(Icons.android),
-          label: Text(
-          'Sign in with Google',
-          style: TextStyle(
-          fontSize: 18
+            onPressed: ()async {
+              try{
+                GoogleAuthProvider _googleAuthProvider= GoogleAuthProvider();
+                await _auth.signInWithProvider(_googleAuthProvider);
+              }
+              catch(e){
+                print(e);
+              }
+              print(_user!.email);
+              userModel.user= _user;
+              if(userModel.user!=null){
+                Navigator.pushReplacementNamed(context, '/dashboard');
+                print(userModel.user!.email);
+              }
+            },
+            icon: Icon(Icons.login),
+            label: Text(
+              'Sign in with Google',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
-          ),
-          ),
-          SizedBox(
-          height: 20,
-          ),
-          Image.asset(
-          'assets/man.png',
-          height: 250,
-          )
+            SizedBox(height: 20),
+            Image.asset('assets/man.png',height: 250,)
           ],
           )
           )

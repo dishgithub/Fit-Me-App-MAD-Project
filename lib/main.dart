@@ -1,6 +1,7 @@
 import 'package:fit_me/firebase_options.dart';
 import 'package:fit_me/models/userModel.dart';
 import 'package:fit_me/pages/dashboard.dart';
+import 'package:fit_me/pages/exercise.dart';
 import 'package:fit_me/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,8 @@ class MyProvider extends StatelessWidget {
           // initialRoute: '/'
           routes: {
             '/': (context)=> LoginWidget(),
-            '/dashboard': (context)=> DashBoardWidget()
+            '/dashboard': (context)=> DashBoardWidget(),
+            '/exercise': (context)=> Exercise(),
           },
 
         )

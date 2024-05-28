@@ -27,7 +27,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        body: SafeArea(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -35,19 +35,14 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
             BottomNavigationBarItem(
             icon: Icon(Icons.run_circle_outlined),
             label: 'Workouts',
-            backgroundColor: Colors.green
           ),
             BottomNavigationBarItem(
             icon: Icon(Icons.set_meal),
             label: 'Meals',
-            // title: Text('Search'),
-            backgroundColor: Colors.yellow
           ),
             BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),
             label: 'Profile',
-            // title: Text('Profile'),
-            backgroundColor: Colors.blue,
           ),
         ],
         currentIndex: _selectedIndex,

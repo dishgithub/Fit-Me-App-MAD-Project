@@ -19,7 +19,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserModel>(
-      builder: (context, userModel,child){
+      builder: (context,userModel,child){
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
