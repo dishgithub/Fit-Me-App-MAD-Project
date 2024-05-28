@@ -43,7 +43,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
           Text(
-          'Pump House',
+          'Fit Me',
           style: TextStyle(
           fontSize: 40,
           fontWeight: FontWeight.w800,

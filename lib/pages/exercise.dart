@@ -8,6 +8,8 @@ class Exercise extends StatefulWidget {
 }
 
 class _ExerciseState extends State<Exercise> {
+  int selectedMinutes= 1;
+  int selectedSeconds= 0;
   List<int> minList= [1,2,3,4,5,6,7,8,9,10,15,20,30,45,60];
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class _ExerciseState extends State<Exercise> {
             height: 30,
           ),
           Text(
-            "00:00",
+            "$selectedMinutes:00",
             style: TextStyle(
               fontSize: 80,
               fontWeight: FontWeight.w500
@@ -44,7 +46,10 @@ class _ExerciseState extends State<Exercise> {
                   (e) => DropdownMenuItem(value: e,child: Text('${e} minutes', style: TextStyle(fontSize: 20),))
                 ).toList(),
                 onChanged: (value){
-
+                  setState(() {
+                    selectedMinutes= value!;
+                  });
+                  selectedSeconds= 0;
                 },
                 value: 1,
                 padding: EdgeInsets.symmetric(
@@ -54,11 +59,18 @@ class _ExerciseState extends State<Exercise> {
               )
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("Enter push ups: ", style: TextStyle(fontSize: 25),),
-            ],
+          SizedBox(
+            height: 280,
+          ),
+          ElevatedButton(
+            onPressed: (){
+
+            },
+            child: Text('Start',style: TextStyle(fontSize: 25, color: Colors.white),),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.pinkAccent),
+
+            ),
           )
         ],
       ),
